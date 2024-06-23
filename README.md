@@ -40,6 +40,9 @@ $ ls -ltr filename.o
 
 # Simulating the assembly code
 
+![assembly](https://github.com/Varsha212003/VSDsquadron--mini-internship/assets/142906031/6d1f287a-db4f-492a-8240-fa6aed6f7935)
+
+
 $ riscv64-unknown-elf-objdump -d filename.o //Gives bunch of Code
 
 $ riscv64-unknown-elf-objdump -d filename.o | less // Gives Reduced Code
