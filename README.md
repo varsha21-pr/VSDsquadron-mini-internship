@@ -52,6 +52,8 @@ $ riscv64-unknown-elf-objdump -d filename.o | less // Gives Reduced Code
 By following these steps, you can set up your development environment, write, and evaluate C and corresponding RISC-V assembly code effectively
 
 
+
+
 # VSDsquadron---CLOCK--CYCLE--DIVIDER
 
 A clock cycle divider is a circuit that takes an input clock signal and produces an output clock signal with a frequency that is a fraction of the input frequency. This is often used in digital circuits to reduce the frequency of a clock signal for various components.
