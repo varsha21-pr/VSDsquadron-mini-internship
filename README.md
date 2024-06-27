@@ -117,3 +117,36 @@ This output shows the state of the output clock for each input clock cycle, simu
 One common simulator is Spike, the RISC-V ISA Simulator. If you have Spike installed, you can run the program like this:
 
 " spike pk clock_divider "
+
+
+# SPIKE SIMULATION
+
+Spike is a popular RISC-V ISA simulator often used for running and testing RISC-V binaries
+
+compile your C code with -O1 and -Ofast optimization levels
+
+riscv64-unknown-elf-gcc -O1 -o program_O1 filename.c
+
+riscv64-unknown-elf-gcc -Ofast -o program_Ofast filename.c
+
+![C code with -O1 and -Ofast](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/f16888cb-6193-4273-8783-a1083669769c)
+
+
+# DEBUG THE SPIKE
+
+ Generate RISC-V Object Dump
+ 
+To inspect the compiled binaries, use riscv64-unknown-elf-objdump:
+
+![DEBUGGING](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/c5b72e2c-ae73-45dc-b872-7c95f1914219)
+
+The RISC-V Proxy Kernel, pk , is a lightweight application execution environment that can host statically-linked RISC-V ELF binaries.
+It is designed to support tethered RISC-V implementations with limited I/O capability and thus handles I/O-related system calls by proxying them to a host computer
+
+
+![running on spike](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/fc7a4884-6646-4852-b30d-2d0d5fad208d)
+
+
+
+
+
