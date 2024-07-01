@@ -147,6 +147,211 @@ It is designed to support tethered RISC-V implementations with limited I/O capab
 ![running on spike](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/fc7a4884-6646-4852-b30d-2d0d5fad208d)
 
 
+# TASK - 4
+
+"Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions
+
+ADD r6, r2, r1 SUB r7, r1, r2 AND r8, r1, r3 OR r9, r2, r5 XOR r10, r1, r4 SLT r11, r2, r4 ADDI r12, r4, 5 SW r3, r1, 2 SRL r16, r14, r2 BNE r0, r1, 20 BEQ r0, r0, 15 LW r13, r1, 2 SLL r15, r1, r2
+
+Upload the 32-bit pattern on Github"
+
+Here are the 32-bit instruction codes for the specified RISC-V instructions:
+
+ADD r6, r2, r1: 0x00610133
+
+SUB r7, r1, r2: 0x402081b3
+
+AND r8, r1, r3: 0x00709133
+
+OR r9, r2, r5: 0x005121b3
+
+XOR r10, r1, r4: 0x0040a1b3
+
+SLT r11, r2, r4: 0x004151b3
+
+ADDI r12, r4, 5: 0x00520113
+
+SW r3, r1, 2: 0x0020a023
+
+SRL r16, r14, r2: 0x0020e3b3
+
+BNE r0, r1, 20: 0x01404063
+
+BEQ r0, r0, 15: 0x00e04063
+
+LW r13, r1, 2: 0x00209083
+
+SLL r15, r1, r2: 0x002091b3
+
+# INSTRUCTION FORMATS :
+
+# R-Type: Used for register-register operations.
+
+Fields: opcode, rd, funct3, rs1, rs2, funct7
+
+Format: funct7[6] rs2[5] rs1[5] funct3[3] rd[5] opcode[7]
+
+# I-Type: Used for immediate and load operations.
+
+Fields: opcode, rd, funct3, rs1, imm[11:0]
+
+Format: imm[11:0] rs1[5] funct3[3] rd[5] opcode[7]
+
+# S-Type: Used for store operations.
+
+Fields: opcode, imm[11:5], funct3, rs1, rs2, imm[4:0]
+
+Format: imm[11:5] rs2[5] rs1[5] funct3[3] imm[4:0] opcode[7]
+
+# B-Type: Used for branch operations.
+
+Fields: opcode, imm[12], imm[10:5], funct3, rs1, rs2, imm[4:1], imm[11]
+
+Format: imm[12|10:5] rs2[5] rs1[5] funct3[3] imm[4:1|11] opcode[7]
+
+# U-Type: Used for upper immediate operations.
+
+Fields: opcode, rd, imm[31:12]
+
+Format: imm[31:12] rd[5] opcode[7]
+
+# J-Type: Used for jump operations.
+
+Fields: opcode, rd, imm[20|10:1|11|19:12]
+
+Format: imm[20|10:1|11|19:12] rd[5] opcode[7]
+
+# Decoding Instructions:
+# 1) ADD r6, r2, r1
+
+Type: R
+
+funct7 = 0000000, rs2 = 00001, rs1 = 00010, funct3 = 000, rd = 00110, opcode = 0110011
+
+Instruction code: 0000000 00001 00010 000 00110 0110011
+
+# 2) SUB r7, r1, r2
+
+Type: R
+
+funct7 = 0100000, rs2 = 00010, rs1 = 00001, funct3 = 000, rd = 00111, opcode = 0110011
+
+Instruction code: 0100000 00010 00001 000 00111 0110011
+
+# 3) AND r8, r1, r3
+
+Type: R
+
+funct7 = 0000000, rs2 = 00011, rs1 = 00001, funct3 = 111, rd = 01000, opcode = 0110011
+
+Instruction code: 0000000 00011 00001 111 01000 0110011
+
+# 4) OR r9, r2, r5
+
+Type: R
+
+funct7 = 0000000, rs2 = 00101, rs1 = 00010, funct3 = 110, rd = 01001, opcode = 0110011
+
+Instruction code: 0000000 00101 00010 110 01001 0110011
+
+# 5) XOR r10, r1, r4
+
+Type: R
+
+funct7 = 0000000, rs2 = 00100, rs1 = 00001, funct3 = 100, rd = 01010, opcode = 0110011
+
+Instruction code: 0000000 00100 00001 100 01010 0110011
+
+# 6) SLT r11, r2, r4
+
+Type: R
+
+funct7 = 0000000, rs2 = 00100, rs1 = 00010, funct3 = 010, rd = 01011, opcode = 0110011
+
+Instruction code: 0000000 00100 00010 010 01011 0110011
+
+# 7) ADDI r12, r4, 5
+
+Type: I
+
+imm = 000000000101, rs1 = 00100, funct3 = 000, rd = 01100, opcode = 0010011
+
+Instruction code: 000000000101 00100 000 01100 0010011
+
+# 8) SW r3, r1, 2
+
+Type: S
+
+imm = 0000000 (high) 00010 (low), rs2 = 00011, rs1 = 00001, funct3 = 010, opcode = 0100011
+
+Instruction code: 0000000 00011 00001 010 00010 0100011
+
+# 9) SRL r16, r14, r2
+
+Type: R
+
+funct7 = 0000000, rs2 = 00010, rs1 = 01110, funct3 = 101, rd = 10000, opcode = 0110011
+
+Instruction code: 0000000 00010 01110 101 10000 0110011
+
+# 10) BNE r0, r1, 20
+
+Type: B
+
+imm = 000000 (high) 0100 1 (low), rs2 = 00001, rs1 = 00000, funct3 = 001, opcode = 1100011
+
+Instruction code: 0000000 00001 00000 001 000100 1 1100011
+
+# 11) BEQ r0, r0, 15
+
+Type: B
+
+imm = 000000 (high) 0111 0 (low), rs2 = 00000, rs1 = 00000, funct3 = 000, opcode = 1100011
+
+Instruction code: 0000000 00000 00000 000 001110 0 1100011
+
+# 12) LW r13, r1, 2
+
+Type: I
+
+imm = 000000000010, rs1 = 00001, funct3 = 010, rd = 01101, opcode = 0000011
+
+Instruction code: 000000000010 00001 010 01101 0000011
+
+# 13) SLL r15, r1, r2
+
+Type: R
+
+funct7 = 0000000, rs2 = 00010, rs1 = 00001, funct3 = 001, rd = 01111, opcode = 0110011
+
+Instruction code: 0000000 00010 00001 001 01111 0110011
+
+# Clone the repository locally:
+
+git clone <repository_url>
+
+# Navigate into the cloned repository directory:
+
+cd RISC-V-Instructions
+
+Move or copy the downloaded file instruction_codes.txt to the cloned repository directory
+
+git add instruction_codes.txt
+
+# Commit the changes:
+
+git commit -m "Add RISC-V instruction codes with explanations"
+
+# Push the changes to GitHub:
+
+git push origin main .
+
+
+
+
+
+
+
 
 
 
