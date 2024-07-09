@@ -147,6 +147,8 @@ It is designed to support tethered RISC-V implementations with limited I/O capab
 ![running on spike](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/fc7a4884-6646-4852-b30d-2d0d5fad208d)
 
 
+            
+
 # TASK - 4
 
 "Identify various RISC-V instruction type (R, I, S, B, U, J) and exact 32-bit instruction code in the instruction type format for below RISC-V instructions
@@ -347,11 +349,85 @@ git commit -m "Add RISC-V instruction codes with explanations"
 git push origin main .
 
 
+         
+# TASK - 5
 
+Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment and upload the waveforms. 
 
+# STEP-1 - CLONING THE REFERENCE REPOSITORY
 
+     - $ git clone https://github.com/vinayrayapati/rv32i.git my_riscv_project
+      
+      $ cd my_riscv_project -
 
+![clone](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/0be38494-6c37-412b-ba26-6f30d7dfdba5)
 
+# STEP-2 - SETTING UP THE SIMILATION TOOLS
+
+    -  $ sudo apt update
+      
+      $ sudo apt install iverilog gtkwave -
+
+![sudo apt](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/62014a93-3119-4054-a121-070f16b921c1)
+
+# STEP-3 - RUN THE FUNCTIONAL SIMULATIONAL
+
+Testbench is configured to dump waveforms into a " .vcd " file.
+
+     -  $ nano iiitb_rv32i_tb.v  -
+
+![file3](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/eec0330a-58db-431b-a178-57c41161352a)
+
+![functional](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/17d49eaf-3e16-4459-b2e1-6637219d02ff)
+
+compile and simulate:
+
+  -  $ iverilog -o rv32i_simulation iiitb_rv32i.v iiitb_rv32i_tb.v
+    
+    $ vvp rv32i_simulation -
+    
+gtkwave window will open after commanding the below code
+
+  -  $ gtkwave simulation.vcd     -
+
+![gtk wave window](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/da3c89b8-f194-42e1-86b6-f3b857fbd015)
+
+--> click " + " icon near iiitb_rv32i_tb 
+--> rv32 will pop out
+
+# OUTPUT
+
+# ADD:
+
+![ADD](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/ad57ef1c-747b-4b71-888c-072ff97e9715)
+
+# SUB:
+
+![SUB](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/8144d79c-7ba9-4f04-9d9b-e29f9847050a)
+
+# AND:
+
+![AND](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/4c0faceb-95a1-4eab-8ad2-b302aa4739fe)
+
+# OR:
+
+![OR](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/de9c2ddc-51bc-4c88-a25f-4498e53528da)
+
+# XOR:
+
+![XOR](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/2a8c0687-55e2-47b0-96ae-34eac0e73f30)
+
+# SLT:
+
+![SLT](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/9bbdac27-6388-4ca8-a164-8ace2ced13bd)
+
+# BEQ:
+
+![BEQ](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/2956baee-3c0f-4b95-a035-d42196404ff0)
+
+# BNE:
+
+![BNE](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/e122cde8-2144-4c60-a457-a0585f33f5bb)
 
 
 
