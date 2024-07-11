@@ -430,4 +430,142 @@ gtkwave window will open after commanding the below code
 ![BNE](https://github.com/varsha21-pr/VSDsquadron-mini-internship/assets/142906031/e122cde8-2144-4c60-a457-a0585f33f5bb)
 
 
+ # | TASK - 6 |
+
+# PROJECT NAME 
+  Clock Cycle Divider: Crafting a Digital Clock Divider Circuit
+
+# OVERVIEW 
+
+The Clock Cycle Divider project aims to design a clock divider using a RISC-V processor. The objective is to divide the frequency of an input clock signal to produce a lower frequency output signal. This clock divider is an essential component in digital systems where timing and frequency control are crucial.The system uses a CH32V003 RISC-V processor to manage the clock signals and interfaces with other digital components for clock signal generation and division.
+
+# Components Required
+
+- RISC-V processor
+
+- Clock signal generator
+ 
+- Breadboard
+
+- Jumper wires
+
+- Power supply
+
+- Oscilloscope or frequency counter (for testing and verification)
+
+- Supporting peripherals and components for the RISC-V processor
+
+# Circuit Connection
+
+1- Connect the input clock signal to the clock input pin of the RISC-V processor.
+
+2- Configure the RISC-V processor to implement the clock divider logic.
+ 
+3- Connect the output pins of the RISC-V processor to the appropriate pins on the breadboard.
+ 
+4- Connect the power supply to the power pins of the RISC-V processor.
+
+5- Use jumper wires to make the necessary connections between components.
+ 
+6- Verify the connections with an oscilloscope or frequency counter to ensure the correct frequency output.
+
+# Table for Pin Connection
+
+| Pin Number | Pin Name        | Connection                        |
+|------------|-----------------|---------------------------------  |
+| 1          | Clock Input     | Connect to clock signal generator |
+| 2          | Vcc             | Connect to power supply (+5V)     |
+| 3          | Ground          | Connect to ground                 |
+| 4          | Output          | Connect to subsequent circuit     |
+
+# BLOCK DIAGRAM
+
+
+         +---------------------+
+         | Input Clock Signal  |
+         +----------+----------+
+                    |
+                    v
+         +----------+----------+
+         |    Clock Divider    |
+         |   Control Module    |
+         +----------+----------+
+                    |
+                    v
+        +-----------+------------+
+        | RISC-V Processor Core  |
+        +-----------+------------+
+                    |
+                    v
+        +-----------+------------+
+        |    Clock Divider       |
+        |   Implementation       |
+        +-----------+------------+
+                    |
+                    v
+         +----------+-----------+
+         |     Output Clock     |
+         |      Signal          |
+         +----------------------+
+
+Input Clock Signal : The initial clock signal that you want to divide.
+
+Clock Divider Control Module : Handles the configuration and control of the clock divider, potentially programmed via the RISC-V processor.
+
+RISC-V Processor Core : Executes instructions and manages the control flow for dividing the clock signal.
+
+Clock Divider Implementation : The actual hardware or software mechanism that performs the clock division, producing the output clock signal with the desired frequency.
+
+Output Clock Signal : The resulting clock signal after division.
+
+# SAMPLE CODE :
+
+#include <stdio.h>
+
+#include <stdint.h>
+
+// Example input clock frequency in Hz
+
+#define INPUT_CLOCK_FREQ 1000000  // 1 MHz
+
+// Example divide factor
+
+#define DIVIDE_FACTOR 4
+
+// Function to simulate reading an input clock signal
+
+uint32_t readInputClock() {
+
+    static uint32_t count = 0;
+    
+    return ++count; // Simulating an increasing count as input clock signal
+}
+
+// Function to simulate generating an output clock signal
+
+void generateOutputClock(uint32_t count) {
+
+    if (count % DIVIDE_FACTOR == 0) {
+    
+        printf("Output Clock: %d Hz\n", INPUT_CLOCK_FREQ / DIVIDE_FACTOR);
+        
+    }
+    
+}
+
+int main() {
+
+    printf("Input Clock: %d Hz\n", INPUT_CLOCK_FREQ);
+
+    while (1) {
+    
+        uint32_t inputClock = readInputClock();
+        
+        generateOutputClock(inputClock);
+    }
+
+    return 0;
+}
+
+
 
